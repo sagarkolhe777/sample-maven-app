@@ -14,22 +14,28 @@ pipeline {
             }
         }     
         stage('Compile') {
+            steps {
            withMaven(maven : 'Maven') {
                bat 'mvn clean compile'
                echo 'Comile Done'
            }
+            }
         }
         stage('Test') {
+            steps {
            withMaven(maven : 'Maven') {
                bat 'mvn test'
                echo 'Test Done'
            }
+            }
         }
         stage('Build') {
+            steps {
             withMaven(maven : 'Maven') {
                bat 'mvn clean install'
                echo 'Build Done'
            }
+            }
         }
     }
 }
