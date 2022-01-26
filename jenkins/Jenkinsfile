@@ -4,7 +4,7 @@ pipeline {
     stage('Checkout Project') {
         steps {
             git branch: 'master',
-                url: 'ssh://git@test.com/proj/test_proj.git'
+                url: 'ssh://github.com/sagarkolhe777/sample-maven-app.git'
 
             sh "ls -lat"
         }
