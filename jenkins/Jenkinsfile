@@ -12,13 +12,20 @@ pipeline {
                          userRemoteConfigs: [[credentialsId: 'git-hub-credentials', url: 'https://github.com/sagarkolhe777/sample-maven-app.git']]])
                 echo "Checkout Done"
             }
-        }     
+        }    
         stage('Compile') {
             steps {
                bat 'mvn clean compile'
                echo 'Comile Done'
             }
         }
+        stage("SonarQube Analysis") {
+            steps {
+              withSonarQubeEnv('My SonarQube Server') {
+                bat 'mvn clean package sonar:sonar'
+              }
+            }
+          }
         stage('Test') {
             steps {
                bat 'mvn test'
