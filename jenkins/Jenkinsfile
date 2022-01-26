@@ -1,6 +1,15 @@
 pipeline {
     agent any
     
+    stage('Checkout Project') {
+        steps {
+            git branch: 'master',
+                url: 'ssh://git@test.com/proj/test_proj.git'
+
+            sh "ls -lat"
+        }
+    }
+    
     stages {
         stage('Build') {
             steps {
