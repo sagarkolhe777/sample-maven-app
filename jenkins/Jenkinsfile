@@ -7,7 +7,6 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: 'master' ]],
                          userRemoteConfigs: [[url: 'https://github.com/sagarkolhe777/sample-maven-app.git']]])
-                sh "ls -lart ./*"
             }
         }     
         stage('Build') {
