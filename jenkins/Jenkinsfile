@@ -47,4 +47,21 @@ pipeline {
             }
         }
     }
+    post { 
+		always { 
+			echo 'One way or another, I have finished'
+		}
+		aborted{
+			sleep(1)
+			script{currentBuild.result='ABORTED'}
+		}
+		failure{
+			sleep(1)
+			script{currentBuild.result='FAILURE'}
+		}
+		success{
+			sleep(1)
+			script{currentBuild.result='SUCCESS'}
+		}
+	}	
 }
